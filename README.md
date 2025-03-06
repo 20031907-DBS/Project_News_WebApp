@@ -35,7 +35,7 @@ Users can comment and give opinions.
 Like, share, and report functionalities.
 Minimal moderation tools.(Admin)
 
-# [No real time communication in the beginning as we are focusing on CURD webapp + api integration + SPA ==> priority]
+### [No real time communication in the beginning as we are focusing on CURD webapp + api integration + SPA ==> priority]
 
 ---later as users are if they are using the product ill add new features and scale it further 
 
