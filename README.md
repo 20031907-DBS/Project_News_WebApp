@@ -46,3 +46,8 @@ will deploy Iaas (will pick up learnings from networking class)
 CI/CD - Github actions 
 #### No focus on website UI 
 
+API: [NewsAPI.org]
+
+MVP of product no greater than 30 days . 2 weeks being minimum 
+
+
