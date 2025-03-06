@@ -48,6 +48,6 @@ CI/CD - Github actions
 
 API: [NewsAPI.org]
 
-MVP of product no greater than 30 days . 2 weeks being minimum 
+## MVP of product no greater than 30 days . 2 weeks being minimum 
 
 
