@@ -44,5 +44,5 @@ Nodejs, Nextjs , Database(relational) (not yet decided)
 Firebase for auth (may change ) 
 will deploy Iaas (will pick up learnings from networking class) 
 CI/CD - Github actions 
-# No focus on website UI 
+#### No focus on website UI 
 
