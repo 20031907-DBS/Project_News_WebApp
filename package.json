@@ -1,0 +1,25 @@
+{
+  "name": "project_news_webapp",
+  "version": "1.0.0",
+  "description": "1. Recently, Trust over news agencies has seen a drop due to n number of reasons.\r 2. This has resulted in losing faith over these agencies that were supposed to inform and educate civilians and hence the revenue drop\r 3. Current gap is widening slowly and with new upcoming generation it will increase even more i think as more people are switching to social media platform for their news sources\r 4. A major issue lies in the current structure of news websites, where users are bombarded with an overwhelming amount of content, much of which is driven by the interests of the agencies themselves, often dictated by funding, sponsors, or advertisers  --> civilians do not want that\r 5. This creates a sense of distrust and detachment among readers.\r 6. Hence new generation is switching to social platforms but mostly are unaware there is an issue to content manipulation, algorithmic manipulation and pushing content based on engagement\r 7. This is even Worse than traiditional news agencies -> This increases the rate of creating echo chambers and polarization of public opinion -> leaving up with fragmented society .\r 8. so civilians are kinda stuck in middle and are their opinions are being played upon rather what civilian want i.e crystal clear news with authenticity / responsibiltity\r # Business_solution\r points of requirment: switching resonsibility to article writers and they would be face of news agencies and not the news agencies itself.\r I propose the creation of a news web app that woud be a spin version of news agencies in the realm of social media targeting new generation than than the traditional model of news delivery. The platform will be a hybrid of social media engagement and responsible journalism, focusing on article writers (independent journalists, reporters, and subject matter experts) rather than traditional news agencies. Writers will create and submit articles directly to the platform, bypassing the need for intermediary news agencies.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/20031907-DBS/Project_News_WebApp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/20031907-DBS/Project_News_WebApp/issues"
+  },
+  "homepage": "https://github.com/20031907-DBS/Project_News_WebApp#readme",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  }
+}
