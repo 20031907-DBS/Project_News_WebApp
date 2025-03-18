@@ -67,9 +67,9 @@ app.post("/fetch-and-save-news", async (req, res) => {
       res.json({
         message:
           "News fetched and saved successfully! ======>======>======>======>",
-        testing,
+        counthowmanygotadded: testing.length,
       });
-      console.log(testing);
+      console.log(testing.length);
     } else {
       res.status(500).json({ error: "Failed to fetch news from NewsAPI.org" });
     }
@@ -77,4 +77,24 @@ app.post("/fetch-and-save-news", async (req, res) => {
     console.error(err);
     res.status(500).json({ error: "An error occurred" });
   }
+});
+//part of deletion
+app.delete("/delete-data-1day-old", async (req, res) => {
+  const flushdata = new Date();
+  flushdata.setDate(flushdata.getHours() - 2);
+
+  try {
+    const del = await Article.deleteMany({ publishedAt: { $lt: flushdata } });
+    console.log(
+      "deleted data 2 hour ago : here is the deleted data count",
+      del.deletedCount
+    );
+    res.json({
+      message: "deleted data 2 hour ago : here is the deleted data count",
+      deletedCount: del.deletedCount,
+    });
+  } catch (err) {
+    console.log("error deleting the data", err);
+  }
+  //
 });
