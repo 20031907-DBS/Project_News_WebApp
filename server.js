@@ -2,7 +2,9 @@ const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const Article = require("./article");
-
+//html embedding
+const path = require("path");
+//
 dotenv.config();
 
 const app = express();
@@ -21,8 +23,12 @@ mongoose
     process.exit(1);
   });
 
-app.get("/", (req, res) => {
-  res.send("Hello from your new API");
+//added html file to route /  GET version 10
+// app.get("/", (req, res) => {
+//   res.send("Hello from your new API");
+// });
+app.get("/", (res) => {
+  res.sendFile(path.join(__dirname, "index.html"));
 });
 
 app.listen(port, () => {
@@ -40,7 +46,7 @@ app.get("/articles", async (req, res) => {
   }
 });
 
-app.post("/fetch-and-save-news", async (req, res) => {
+app.post("/fetch-and-save-news", async (res) => {
   try {
     const apiKey = process.env.NEWSAPI_KEY; // Make sure you have this in your .env file
     const apiUrl = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${apiKey}`;
@@ -79,7 +85,7 @@ app.post("/fetch-and-save-news", async (req, res) => {
   }
 });
 //part of deletion
-app.delete("/delete-data-1day-old", async (req, res) => {
+app.delete("/delete-data-1day-old", async (res) => {
   const flushdata = new Date();
   flushdata.setDate(flushdata.getHours() - 2);
 
