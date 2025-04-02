@@ -91,6 +91,14 @@ async function fetchNews() {
   }
 }
 
+function getLoadingStateMessage(loading, posts) {
+  if (loading && posts.length === 0) {
+    return '<p>Loading...</p>';
+  }
+  return loading ? '<p>Loading more posts...</p>' : '';
+}
+
+
 function renderPosts() {
   const loadingMessage = getLoadingStateMessage(loading, posts);
   const postsHTML = posts.map(generatePostHTML).join('');
