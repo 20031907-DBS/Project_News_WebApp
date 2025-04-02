@@ -24,4 +24,16 @@
     bottom: 20px;
     border-radius: 16px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    animation: floatUpDown 3s ease-in-out infinite;
+
 }
+
+@keyframes floatUpDown {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(10px);
+    }
+  }
+
