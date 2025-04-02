@@ -55,6 +55,42 @@
     sidebar.appendChild(button);
   });
 }
+
+let posts = [];
+let page = 1;
+let loading = false;
+let activeCategory = 'general';
+
+ 
+async function fetchNews() {
+  if (loading) return;   
+  loading = true;
+
+  try {
+    const category = activeCategory.toLowerCase();
+    const response = await fetch(`http://localhost:5000/api/news?page=${page}&category=${category === 'general' ? '' : category}`);
+    const data = await response.json();
+
+    
+    if (data.article) {
+      data.articles.forEach(article => {
+        posts.push({
+          title: article.title,
+          description: article.description,
+          url: article.url,
+          imageUrl: article.urlToImage ? `${article.urlToImage}` : null
+        });
+      });
+      renderPosts();  
+      page++;  
+    }
+  } catch (error) {
+    console.error('Error fetching news:', error);
+  } finally {
+    loading = false;   
+  }
+}
+
 initializeUI(); 
 
   </script>
