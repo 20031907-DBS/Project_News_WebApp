@@ -4,10 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Project_News_WEBAPP</title>
+    <link rel="stylesheet" href="index.css">
   </head>
   <body>
-    <h1>Latest Top Headlines</h1>
-    <div id="container"></div>
+<!--    <div id="container"></div>
     <script>
       async function fetchadd() {
         try {
@@ -41,5 +41,21 @@
       }
       fetchadd();
     </script>
+    -->
+    <div id="app" class="app">
+      <div class="sidebar-container" id="sidebar"></div>
+    </div>
+  <script>
+    const sidebar = document.querySelector('#sidebar');
+    const CATEGORIES = ['general', 'business', 'sports', 'entertainment', 'science', 'health', 'technology'];
+    function initializeUI() {
+    CATEGORIES.forEach(category => {
+    const button = document.createElement('button');
+    button.textContent = category;
+    sidebar.appendChild(button);
+  });
+}
+
+  </script>
   </body>
 </html>
