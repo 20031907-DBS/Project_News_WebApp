@@ -72,13 +72,13 @@ async function fetchNews() {
     const data = await response.json();
 
     
-    if (data.article) {
+    if (data.articles) {
       data.articles.forEach(article => {
         posts.push({
           title: article.title,
           description: article.description,
           url: article.url,
-          imageUrl: article.urlToImage ? `${article.urlToImage}` : null
+          imageUrl: article.urlToImage ? `${article.urlToImage}?w=400&h=200&fit=crop` : null
         });
       });
       renderPosts();  
