@@ -27,6 +27,22 @@
     animation: floatUpDown 3s ease-in-out infinite;
 
 }
+.topbar-container {
+  height: 50px;
+  background: #ffffff;
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  align-items: center;
+  border-bottom: 1px solid #e5e5e5;
+  position: fixed;
+  left: 92px;
+  right: 20px;
+  top: 0px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
 
 @keyframes floatUpDown {
     0%, 100% {
