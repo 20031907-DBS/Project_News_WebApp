@@ -44,9 +44,14 @@
     -->
     <div id="app" class="app">
       <div class="sidebar-container" id="sidebar"></div>
+      <div class="topbar-container" id="topbar"></div>
+      <div class="content" id="content"></div>
     </div>
   <script>
-    const sidebar = document.querySelector('#sidebar');
+    const app = document.querySelector('#app');
+    const content = document.querySelector('#content');
+   const topbar = document.querySelector('#topbar');
+   const sidebar = document.querySelector('#sidebar');
     const CATEGORIES = ['general', 'business', 'sports', 'entertainment', 'science', 'health', 'technology'];
     function initializeUI() {
     CATEGORIES.forEach(category => {
@@ -54,6 +59,12 @@
     button.textContent = category;
     sidebar.appendChild(button);
   });
+  CATEGORIES.forEach(category => {
+    const button = document.createElement('button');
+    button.textContent = category;
+    topbar.appendChild(button);
+  });
+
 }
 
 let posts = [];
