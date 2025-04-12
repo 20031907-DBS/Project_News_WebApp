@@ -12,22 +12,18 @@ const port = process.env.PORT || 8080;
 app.use(express.json());
 const uri = process.env.MONGODB_URI;
 
-mongoose
-  .connect(uri)
-  .then(() => {
-    console.log("connected to MongoDB");
-  })
-  .catch((err) => {
-    console.error("could not connect to MongoDB===========...>>>>");
-    console.error(err);
-    process.exit(1);
-  });
+mongoose.connect(uri).then(() => {console.log("connected to MongoDB");}).catch((err) => 
+  {
+    console.error("could not connect to MongoDB");
+    process.exit(true);
+  }
+);
 
 //added html file to route /  GET version 10
 // app.get("/", (req, res) => {
 //   res.send("Hello from your new API");
 // });
-app.get("/", (res) => {
+app.get("/", (req,res) => {
   res.sendFile(path.join(__dirname, "index.html"));
 });
 
@@ -46,7 +42,7 @@ app.get("/articles", async (req, res) => {
   }
 });
 
-app.post("/fetch-and-save-news", async (res) => {
+app.post("/fetch-and-save-news", async (req,res) => {
   try {
     const apiKey = process.env.NEWSAPI_KEY; // Make sure you have this in your .env file
     const apiUrl = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${apiKey}`;
@@ -74,33 +70,31 @@ app.post("/fetch-and-save-news", async (res) => {
         message:
           "News fetched and saved successfully! ======>======>======>======>",
         counthowmanygotadded: testing.length,
-      });
-      console.log(testing.length);
+      })
     } else {
       res.status(500).json({ error: "Failed to fetch news from NewsAPI.org" });
     }
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: "An error occurred" });
+    res.status(500).json({ err: "An error occurred" });
   }
 });
-//part of deletion
-app.delete("/delete-data-1day-old", async (res) => {
-  const flushdata = new Date();
-  flushdata.setDate(flushdata.getHours() - 2);
+//part of deletion----onHold...
+// app.delete("/delete-data-1day-old", async (res) => {
+//   const flushdata = new Date();
+//   flushdata.setDate(flushdata.getHours() - 2);
 
-  try {
-    const del = await Article.deleteMany({ publishedAt: { $lt: flushdata } });
-    console.log(
-      "deleted data 2 hour ago : here is the deleted data count",
-      del.deletedCount
-    );
-    res.json({
-      message: "deleted data 2 hour ago : here is the deleted data count",
-      deletedCount: del.deletedCount,
-    });
-  } catch (err) {
-    console.log("error deleting the data", err);
-  }
+//   try {
+//     const del = await Article.deleteMany({ publishedAt: { $lt: flushdata } });
+//     console.log(
+//       "deleted data 2 hour ago : here is the deleted data count",
+//       del.deletedCount
+//     );
+//     res.json({
+//       message: "deleted data 2 hour ago : here is the deleted data count",
+//       deletedCount: del.deletedCount,
+//     });
+//   } catch (err) {
+//     console.log("error deleting the data", err);
+//   }
   //
-});
+//});

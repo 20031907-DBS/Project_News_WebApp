@@ -7,71 +7,41 @@
     <link rel="stylesheet" href="index.css">
   </head>
   <body>
-<!--    <div id="container"></div>
-    <script>
-      async function fetchadd() {
-        try {
-          const fetchArticle = await fetch("http://localhost:8080/articles");
-          const dataParsed = await fetchArticle.json();
-          const container = document.getElementById("container");
-          dataParsed.forEach((element) => {
-            const head = document.createElement("div");
-            const headline = document.createElement("h2");
-            headline.textContent = element.title;
-            const description = document.createElement("p");
-            description.textContent = element.description;
-            const link = document.createElement("a");
-            link.href = element.url;
-            link.textContent = "Read More";
-            link.target = "_blank";
-            const pubdate = document.createElement("p");
-            pubdate.textContent = element.publishedAt;
-            const source = document.createElement("p");
-            source.textContent = element.source;
-
-            head.appendChild(headline);
-            head.appendChild(description);
-            head.appendChild(pubdate);
-            head.appendChild(source);
-            container.appendChild(head);
-          });
-        } catch (err) {
-          console.log(`E`, err);
-        }
-      }
-      fetchadd();
-    </script>
-    -->
+    <!--cleanedup code see previous commits-->
+    <!--##21th change removing auto loading as i am broke to buy api :( -->
     <div id="app" class="app">
       <div class="sidebar-container" id="sidebar"></div>
       <div class="topbar-container" id="topbar"></div>
       <div class="content" id="content"></div>
+      <button id="loadMoreButton">Load More</button> <!--21-->
     </div>
   <script>
-    const app = document.querySelector('#app');
     const content = document.querySelector('#content');
-   const topbar = document.querySelector('#topbar');
-   const sidebar = document.querySelector('#sidebar');
+    const app = document.querySelector('#app');
+    const topbar = document.querySelector('#topbar');
+    const sidebar = document.querySelector('#sidebar');
     const CATEGORIES = ['general', 'business', 'sports', 'entertainment', 'science', 'health', 'technology'];
+    //<!--21-->
+    const loadMoreButton = document.getElementById("loadMoreButton");
+    
     function initializeUI() {
-    CATEGORIES.forEach(category => {
-    const button = document.createElement('button');
-    button.textContent = category;
-    sidebar.appendChild(button);
-  });
-  CATEGORIES.forEach(category => {
-    const button = document.createElement('button');
-    button.textContent = category;
-    topbar.appendChild(button);
-  });
-
-}
+        CATEGORIES.forEach(category => {
+        const button = document.createElement('button');
+        button.textContent = category;
+        sidebar.appendChild(button);
+        });
+        
+        CATEGORIES.forEach(category => {
+        const button = document.createElement('button');
+        button.textContent = category;
+        topbar.appendChild(button);
+        });
+      }
 
 let posts = [];
 let page = 1;
 let loading = false;
 let activeCategory = 'general';
-
  
 async function fetchNews() {
   if (loading) return;   
@@ -81,7 +51,6 @@ async function fetchNews() {
     const category = activeCategory.toLowerCase();
     const response = await fetch(`http://localhost:5000/api/news?page=${page}&category=${category === 'general' ? '' : category}`);
     const data = await response.json();
-
     
     if (data.articles) {
       data.articles.forEach(article => {
@@ -106,7 +75,7 @@ function generatePostHTML(post) {
   return `
     <div class="content-block">
       <h3>${post.title}</h3>
-      <p>${post.description}</p>
+     <p>${post.description}</p>
       ${post.imageUrl ? `<img src="${post.imageUrl}" alt="${post.title}">` : ''}
       <a href="${post.url}" target="_blank" rel="noopener noreferrer">Read More</a>
     </div>
@@ -127,10 +96,15 @@ function renderPosts() {
   content.innerHTML = postsHTML + loadingMessage;
 }
 
-
-
-initializeUI(); 
-fetchNews();
+    initializeUI(); 
+    //<!--21-->
+    async function loadMorePosts() {
+     await fetchNews(); // Use the existing fetchNews function to get more articles
+    }
+    //add here later event listener if someone wants to load
+    loadMoreButton.addEventListener("click", loadMorePosts);
+    //<!--21-->
+    
   </script>
   </body>
 </html>
