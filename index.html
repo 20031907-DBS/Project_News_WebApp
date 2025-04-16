@@ -4,116 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Project_News_WEBAPP</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="index.css" />
   </head>
   <body>
     <!--cleanedup code see previous commits-->
     <!--##21th change removing auto loading as i am broke to buy api :( -->
-    
-    
-    <div id="app" class="app">
-      <div class="topbarContainer" id="topbar"></div>
 
-      <div class="sidebarContainer" id="sidebar"></div>
-      
-      <div class="newsContainer" id="content"></div>
-
-      <div class="futureContainer" id="future"></div>
-
-    </div>
+    <div id="app" class="app"></div>
 
     <!--picking css styling from website https://www.freecodecamp.org/news/how-to-build-a-news-app-with-html-css-and-javascript/-->
 
-  <script>
-    const content = document.querySelector('#content');
-    const app = document.querySelector('#app');
-    const topbar = document.querySelector('#topbar');
-    const sidebar = document.querySelector('#sidebar');
-    const CATEGORIES = ['general', 'business', 'sports', 'entertainment', 'science', 'health', 'technology'];
-    //<!--21-->
-    const loadMoreButton = document.getElementById("loadMoreButton");
-    
-    function initializeUI() {
-        CATEGORIES.forEach(category => {
-        const button = document.createElement('button');
-        button.textContent = category;
-        sidebar.appendChild(button);
-        });
-        
-        CATEGORIES.forEach(category => {
-        const button = document.createElement('button');
-        button.textContent = category;
-        topbar.appendChild(button);
-        });
-      }
-
-let posts = [];
-let page = 1;
-let loading = false;
-let activeCategory = 'general';
- 
-async function fetchNews() {
-  if (loading) return;   
-  loading = true;
-
-  try {
-    const category = activeCategory.toLowerCase();
-    const response = await fetch(`http://localhost:5000/api/news?page=${page}&category=${category === 'general' ? '' : category}`);
-    const data = await response.json();
-    
-    if (data.articles) {
-      data.articles.forEach(article => {
-        posts.push({
-          title: article.title,
-          description: article.description,
-          url: article.url,
-          imageUrl: article.urlToImage ? `${article.urlToImage}?w=400&h=200&fit=crop` : null
-        });
-      });
-      renderPosts();  
-      page++;  
-    }
-  } catch (error) {
-    console.error('Error fetching news:', error);
-  } finally {
-    loading = false;   
-  }
-}
-
-function generatePostHTML(post) {
-  return `
-    <div class="content-block">
-      <h3>${post.title}</h3>
-     <p>${post.description}</p>
-      ${post.imageUrl ? `<img src="${post.imageUrl}" alt="${post.title}">` : ''}
-      <a href="${post.url}" target="_blank" rel="noopener noreferrer">Read More</a>
-    </div>
-  `;
-}
-
-function getLoadingStateMessage(loading, posts) {
-  if (loading && posts.length === 0) {
-    return '<p>Loading...</p>';
-  }
-  return loading ? '<p>Loading more posts...</p>' : '';
-}
-
-
-function renderPosts() {
-  const loadingMessage = getLoadingStateMessage(loading, posts);
-  const postsHTML = posts.map(generatePostHTML).join('');
-  content.innerHTML = postsHTML + loadingMessage;
-}
-
-    initializeUI(); 
-    //<!--21-->
-    async function loadMorePosts() {
-     await fetchNews(); // Use the existing fetchNews function to get more articles
-    }
-    //add here later event listener if someone wants to load
-    loadMoreButton.addEventListener("click", loadMorePosts);
-    //<!--21-->
-    
-  </script>
+    <script src="app.js"></script>
   </body>
 </html>
