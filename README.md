@@ -28,26 +28,12 @@ conclude: This platform represents a refreshing shift from the traditional, corp
 
 ![Untitled Diagram](https://github.com/user-attachments/assets/687e9a07-616f-4293-80ce-68cf7d065f0a)
 
-MVP of app:
-Article writers can post news.
-News agencies can review/report articles + shall tag them/liscence.
-Users can comment and give opinions.
-Like, share, and report functionalities.
-Minimal moderation tools.(Admin)
 
-### [No real time communication in the beginning as we are focusing on CURD webapp + api integration + SPA ==> priority]
 
----later as users are if they are using the product ill add new features and scale it further 
-
-Tech stack to be focused:(May Change as thigns are developing)
-Nodejs, Nextjs , Database(relational) (not yet decided) 
-Firebase for auth (may change ) 
-will deploy Iaas (will pick up learnings from networking class) 
-CI/CD - Github actions 
-#### No focus on website UI 
 
 API: [NewsAPI.org]
 
 ## MVP of product no greater than 30 days . 2 weeks being minimum 
+This Project will continue to build to its fullest potential
 
 
