@@ -60,9 +60,14 @@ Open your web browser and navigate to http://localhost:5000
 
 
 ###Resources:
+https://mongoosejs.com/docs/guide.html
+https://mongoosejs.com/docs/queries.html
 
 
-AI referred for pagination logic as it is free API it quickly within 3 fetch finishes the quota so in order to control and manage so i can use it for maximum time 
+https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
+
+
+AI referred for pagination logic as it is free API it quickly within 3 fetch finishes the quota so in order to control and manage so i can use it for maximum time
 
 
 
